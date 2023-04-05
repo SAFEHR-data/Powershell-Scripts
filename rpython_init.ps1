@@ -114,16 +114,16 @@ Start-Process $StorageExplorer_INSTALLER_FILE -ArgumentList $StorageExplorer_INS
 
 
 # Git Bash
-$GitBash_INSTALLER_FILE="Git-2.40.0-64-bit.exe"
-$GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/$GitBash_INSTALLER_FILE"
-$GitBash_INSTALL_PATH="$INSTALL_DIRECTORY\GitBash"
-$GitBash_INSTALL_ARGS="NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh" /LOG=git-for-windows.log"
+# $GitBash_INSTALLER_FILE="Git-2.40.0-64-bit.exe"
+# $GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/$GitBash_INSTALLER_FILE"
+# $GitBash_INSTALL_PATH="$INSTALL_DIRECTORY\GitBash"
+# $GitBash_INSTALL_ARGS="NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh" /LOG=git-for-windows.log"
 
-Write-Log "Downloading Git Bash"
-Invoke-WebRequest -Uri $GitBash_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$GitBash_INSTALLER_FILE"
+# Write-Log "Downloading Git Bash"
+# Invoke-WebRequest -Uri $GitBash_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$GitBash_INSTALLER_FILE"
 
-Write-Log "Installing Git Bash"
-Start-Process $GitBash_INSTALLER_FILE -ArgumentList $GitBash_INSTALL_ARGS -Wait
+# Write-Log "Installing Git Bash"
+# Start-Process $GitBash_INSTALLER_FILE -ArgumentList $GitBash_INSTALL_ARGS -Wait
 
 # PATH
 Write-Log "Add Anaconda and R to PATH environment variable"
