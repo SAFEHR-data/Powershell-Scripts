@@ -64,6 +64,7 @@ Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $V
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-toolsai.vscode-ai-remote --force" -Wait
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-toolsai.vscode-ai --force" -Wait
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-python.vscode-pylance --force" -Wait
+Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-vscode.PowerShell --force" -Wait
 
 # R
 $R_INSTALLER_FILE="R-4.2.3-win.exe"
@@ -112,26 +113,12 @@ Invoke-WebRequest -Uri $StorageExplorer_DOWNLOAD_URL -UseBasicParsing -OutFile "
 Write-Log "Installing Azure Storage Explorer..."
 Start-Process $StorageExplorer_INSTALLER_FILE -ArgumentList $StorageExplorer_INSTALL_ARGS -Wait
 
-
-# Git Bash
-# $GitBash_INSTALLER_FILE="Git-2.40.0-64-bit.exe"
-# $GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/$GitBash_INSTALLER_FILE"
-# $GitBash_INSTALL_PATH="$INSTALL_DIRECTORY\GitBash"
-# $GitBash_INSTALL_ARGS="NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh" /LOG=git-for-windows.log"
-
-# Write-Log "Downloading Git Bash"
-# Invoke-WebRequest -Uri $GitBash_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$GitBash_INSTALLER_FILE"
-
-# Write-Log "Installing Git Bash"
-# Start-Process $GitBash_INSTALLER_FILE -ArgumentList $GitBash_INSTALL_ARGS -Wait
-
 # PATH
 Write-Log "Add Anaconda and R to PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$ANACONDA_INSTALL_PATH\condabin;$R_INSTALL_PATH\bin;$VSCODE_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 
-#
 # Write-Log "Clean up..."
 # Set-Location -Path "$INSTALL_DIRECTORY"
 # Remove-Item -Force -Path "$BUILD_DIRECTORY"
 
-Write-Log "VM customisation complete."
+Write-Log "rpython_init script complete."
