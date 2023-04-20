@@ -7,7 +7,6 @@ function Write-Log {
 }
 
 $BUILD_DIRECTORY="C:\BuildArtifacts"
-$INSTALL_DIRECTORY="C:\Software"
 
 $AZCLI_INSTALLER_FILE="AzureCLI.msi"
 $AZCLI_DOWNLOAD_URL="https://aka.ms/installazurecliwindows"
