@@ -11,10 +11,13 @@ $INSTALL_DIRECTORY="C:\Software"
 
 $AZCOPY_INSTALLER_FILE="MicrosoftAzureStorageAzCopy_netcore_x64.msi"
 $AZCOPY_DOWNLOAD_URL="https://aka.ms/downloadazcopy"
-$AZCOPY_INSTALL_ARGS="/qn /jm"
+$AZCOPY_INSTALL_ARGS="/I $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE /qn /norestart"
 
-Write-Log "Downloading AZCOPY installer"
-Invoke-WebRequest $AZCOPY_DOWNLOAD_URL -OutFile $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE
+# Write-Log "Downloading AZCOPY installer"
+# Invoke-WebRequest $AZCOPY_DOWNLOAD_URL -OutFile $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE
 
 Write-Log "Installing AZCOPY"
-Start-Process -FilePath "$BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE" -ArgumentList "/qn /norestart" -Wait
+# Start-Process -FilePath "$BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE" -ArgumentList "/qn /norestart" -Wait
+Start-Process msiexec.exe -Wait -ArgumentList "$AZCOPY_INSTALL_ARGS"
+
+Write-Log "add_azcopy script completed"
