@@ -15,7 +15,7 @@ $GitBash_INSTALLER_FILE="Git-2.40.0-64-bit.exe"
 $GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/$GitBash_INSTALLER_FILE"
 $GitBash_INSTALL_ARGS="/NORESTART /VERYSILENT /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /LOG=$BUILD_DIRECTORY\git-for-windows.log /LOADINF=$SETTINGS_FILE /SUPPRESSMSGBOXES /ALLUSERS"
 
-Write-Log "Creating Settings file"
+Write-Log "Creating GitBash Settings file"
 
 "[Setup]
 Lang=default
@@ -49,4 +49,14 @@ Invoke-WebRequest -Uri $GitBash_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_D
 Write-Log "Installing Git Bash"
 Start-Process "$BUILD_DIRECTORY\$GitBash_INSTALLER_FILE" -ArgumentList $GitBash_INSTALL_ARGS -Wait
 
-Write-Log "add_bash script complete."
+$GitHub_INSTALLER_FILE="GitHubDesktopSetup-x64.msi"
+$GitHub_DOWNLOAD_URL="https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi"
+$GitHub_INSTALL_ARGS="/I $BUILD_DIRECTORY\$GitHub_INSTALLER_FILE /qn /norestart"
+
+Write-Log "Downloading GitHub Desktop Deployment Tool"
+Invoke-WebRequest -Uri "$GitHub_DOWNLOAD_URL" -OutFile "$BUILD_DIRECTORY\$GitHub_INSTALLER_FILE"
+
+Write-Log "Installing Github Desktop Deployment Tool"
+Start-Process msiexec.exe -Wait -ArgumentList "$GitHub_INSTALL_ARGS"
+
+Write-Log "add_git script complete."
