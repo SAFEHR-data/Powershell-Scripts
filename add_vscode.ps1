@@ -44,11 +44,6 @@ Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $V
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-ossdata.vscode-postgresql --force" -Wait
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-mssql.mssql --force" -Wait
 
-
-
-
-
-
 Write-Log "Add VSCode to PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$VSCODE_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 
