@@ -48,7 +48,7 @@ Start-Process $RStudio_INSTALLER_FILE -ArgumentList $RStudio_INSTALL_ARGS -Wait
 
 # PATH
 Write-Log "Add R to PATH environment variable"
-[Environment]::SetEnvironmentVariable("PATH", "$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 
 
 Write-Log "add_r_toolset script completed"
