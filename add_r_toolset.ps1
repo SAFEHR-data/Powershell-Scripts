@@ -40,7 +40,7 @@ Start-Process $RTools_INSTALLER_FILE -ArgumentList $RTools_INSTALL_ARGS -Wait
 
 # RStudio
 $RStudio_INSTALLER_FILE="RStudio-2023.06.0-421.exe"
-$RStudio_DOWNLOAD_URL="https://download1.rstudio.org/desktop/windows/$RStudio_INSTALLER_FILE"
+$RStudio_DOWNLOAD_URL="https://s3.amazonaws.com/rstudio-ide-build/electron/windows/$RStudio_INSTALLER_FILE"
 $RStudio_INSTALL_PATH="$INSTALL_DIRECTORY\RStudio"
 $RStudio_INSTALL_ARGS="/S /D=$RStudio_INSTALL_PATH"
 
