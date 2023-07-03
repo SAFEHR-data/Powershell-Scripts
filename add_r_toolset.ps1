@@ -57,7 +57,7 @@ Write-Log "Add R to PATH environment variable"
 # R packages and tinytex for Rmd rendering
 
 Write-Log "Installing common R packages..."
-R.exe -e "install.packages(c('tidyverse', 'rmarkdown', 'tinytex'), repos='$R_MIRROR')"
-R.exe -e "tinytex::install_tinytex()"
+. $R_INSTALL_PATH/bin/R.exe -e "install.packages(c('tidyverse', 'rmarkdown', 'tinytex'), repos='$R_MIRROR')"
+. $R_INSTALL_PATH/bin/R.exe -e "tinytex::install_tinytex()"
 
 Write-Log "add_r_toolset script completed"
