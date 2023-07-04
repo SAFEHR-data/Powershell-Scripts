@@ -28,9 +28,12 @@ Write-Log "Adding R installation information to windows registry..."
 Start-Process "$R_INSTALL_PATH\bin\x64\RSetReg.exe" -Wait
 
 # RTools - This need to be install at the default location to avoid rtools not found errors.
-$RTools_INSTALLER_FILE="rtools42-5355-5357.exe"
-$RTools_DOWNLOAD_URL="https://cran.r-project.org/bin/windows/Rtools/rtools42/files/$RTools_INSTALLER_FILE"
+# Also need to update with version of R, so R 4.3 -> rtools 43
+$RTools_MAJOR_VERSION="rtools43"
+$RTools_INSTALLER_FILE="$RTools_MAJOR_VERSION-5550-5548.exe"
+$RTools_DOWNLOAD_URL="https://cran.r-project.org/bin/windows/Rtools/$RTools_MAJOR_VERSION/files/$RTools_INSTALLER_FILE"
 $RTools_INSTALL_ARGS="/VERYSILENT /NORESTART /ALLUSERS"
+$RTools_BIN_PATH="C:\$RTools_MAJOR_VERSION\usr\bin\"
 
 Write-Log "Downloading RTools installer..."
 Invoke-WebRequest -Uri $RTools_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$RTools_INSTALLER_FILE"
@@ -51,7 +54,7 @@ Write-Log "Installing RStudio Package..."
 Start-Process $RStudio_INSTALLER_FILE -ArgumentList $RStudio_INSTALL_ARGS -Wait
 
 # PATH
-Write-Log "Add R to PATH environment variable"
+Write-Log "Add R PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 
 # R packages and tinytex for Rmd rendering
