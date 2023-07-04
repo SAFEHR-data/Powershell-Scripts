@@ -40,7 +40,7 @@ Start-Process $RTools_INSTALLER_FILE -ArgumentList $RTools_INSTALL_ARGS -Wait
 
 # RStudio
 $RStudio_INSTALLER_FILE="RStudio-2023.06.0-421.exe"
-$RStudio_DOWNLOAD_URL="https://s3.amazonaws.com/rstudio-ide-build/electron/windows/$RStudio_INSTALLER_FILE"
+$RStudio_DOWNLOAD_URL="https://download1.rstudio.org/desktop/windows/$RStudio_INSTALLER_FILE"
 $RStudio_INSTALL_PATH="$INSTALL_DIRECTORY\RStudio"
 $RStudio_INSTALL_ARGS="/S /D=$RStudio_INSTALL_PATH"
 
@@ -57,7 +57,7 @@ Write-Log "Add R to PATH environment variable"
 # R packages and tinytex for Rmd rendering
 
 Write-Log "Installing common R packages..."
-. $R_INSTALL_PATH/bin/R.exe -e "install.packages(c('tidyverse', 'rmarkdown', 'tinytex'), repos='$R_MIRROR')"
+. $R_INSTALL_PATH/bin/R.exe -e "install.packages(c('tidyverse', 'rmarkdown', 'markdown', 'tinytex'), repos='$R_MIRROR')"
 . $R_INSTALL_PATH/bin/R.exe -e "tinytex::install_tinytex()"
 
 Write-Log "add_r_toolset script completed"
