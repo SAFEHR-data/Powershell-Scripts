@@ -53,14 +53,16 @@ Invoke-WebRequest -Uri $RStudio_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_D
 Write-Log "Installing RStudio Package..."
 Start-Process $RStudio_INSTALLER_FILE -ArgumentList $RStudio_INSTALL_ARGS -Wait
 
-# PATH
-Write-Log "Add R PATH environment variable"
-[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
-
 # R packages and tinytex for Rmd rendering
 
 Write-Log "Installing common R packages..."
 . $R_INSTALL_PATH/bin/R.exe -e "install.packages(c('tidyverse', 'rmarkdown', 'markdown', 'tinytex'), repos='$R_MIRROR')"
-. $R_INSTALL_PATH/bin/R.exe -e "tinytex::install_tinytex()"
+. $R_INSTALL_PATH/bin/R.exe -e "tinytex::install_tinytex(dir='C:\\Software\\TinyTex')"
+
+# PATH
+Write-Log "Add R and tinxytex to PATH environment variable"
+[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$INSTALL_DIRECTORY\TinyTex\bin\windows", [EnvironmentVariableTarget]::Machine)
+
 
 Write-Log "add_r_toolset script completed"
