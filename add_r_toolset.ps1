@@ -64,5 +64,8 @@ Write-Log "Add R and tinxytex to PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$R_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$INSTALL_DIRECTORY\TinyTex\bin\windows", [EnvironmentVariableTarget]::Machine)
 
+# Shortcuts
+Write-Log "Creating RStudio desktop shortcut"
+New-Item -ItemType SymbolicLink -Path "~\Desktop\RStudio.lnk" -Target "$RStudio_INSTALL_PATH/rstudio.exe"
 
 Write-Log "add_r_toolset script completed"
