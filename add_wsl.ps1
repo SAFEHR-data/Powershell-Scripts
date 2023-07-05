@@ -7,6 +7,6 @@ function Write-Log {
 }
 
 Write-Log "Install Default WSL System"
-wsl --install
+Start-Process wsl -ArgumentList "--install" -Wait
 
 Write-Log "add_wsl script completed"
