@@ -1,5 +1,3 @@
-# Requires WSL being installed before running, make sure to run `add_wsl.ps1` first
-
 function Write-Log {
     param (
         $message
@@ -29,5 +27,8 @@ Invoke-WebRequest -Uri $DOCKER_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DI
 
 Write-Log "Installing docker desktop..."
 Start-Process $DOCKER_INSTALLER_FILE -ArgumentList $DOCKER_INSTALL_ARGS -Wait
+
+Write-Log "Moving shortcut to desktop..."
+Move-Item -Path "$BUILD_DIRECTORY\Docker Desktop.lnk" -Destination "~/Desktop"
 
 Write-Log "add_docker script completed"
