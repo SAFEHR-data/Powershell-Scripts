@@ -24,3 +24,5 @@ Invoke-WebRequest -Uri $DOCKER_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DI
 
 Write-Log "Installing docker desktop..."
 Start-Process $DOCKER_INSTALLER_FILE -ArgumentList $DOCKER_INSTALL_ARGS -Wait
+
+Write-Log "add_docker script completed"
