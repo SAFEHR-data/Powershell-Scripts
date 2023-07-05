@@ -23,6 +23,6 @@ Write-Log "Downloading WSL updater..."
 Invoke-WebRequest -Uri $WSL_UPDATE_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$WSL_UPDATE_FILE"
 
 Write-Log "Running WSL updater..."
-Start-Process msiexec.exe -ArgumentList "/I $WSL_UPDATE_FILE /quiet" -Wait
+Start-Process msiexec.exe -ArgumentList "/I $WSL_UPDATE_FILE ALLUSERS='1' /quiet /norestart" -Wait
 
 Write-Log "add_wsl script completed"
