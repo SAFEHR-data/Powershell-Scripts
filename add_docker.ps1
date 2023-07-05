@@ -13,6 +13,11 @@ $INSTALL_DIRECTORY="C:\Software"
 
 Set-Location -Path $BUILD_DIRECTORY
 
+# WSL2
+Write-Log "Installing WSL2..."
+Start-Process wsl -ArgumentList "--install" -Wait
+Start-Process wsl -ArgumentList "--update" -Wait
+
 # Docker desktop
 $DOCKER_DOWNLOAD_URL="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
 $DOCKER_INSTALLER_FILE="docker_installer.exe"
