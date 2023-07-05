@@ -66,6 +66,6 @@ Write-Log "Add R and tinxytex to PATH environment variable"
 
 # Shortcuts
 Write-Log "Creating RStudio desktop shortcut"
-New-Item -ItemType SymbolicLink -Path "~\Desktop\RStudio.lnk" -Target "$RStudio_INSTALL_PATH/rstudio.exe"
+New-Item -ItemType SymbolicLink -Path "~\Desktop\RStudio.lnk" -Target "$RStudio_INSTALL_PATH\rstudio.exe"
 
 Write-Log "add_r_toolset script completed"
