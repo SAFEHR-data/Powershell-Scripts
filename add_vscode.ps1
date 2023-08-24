@@ -44,6 +44,9 @@ Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $V
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension ms-vscode.vscode-node-azure-pack --force" -Wait
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension RDebugger.r-debugger --force" -Wait
 Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension REditorSupport.r --force" -Wait
+Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension vscodevim.vim --force" -Wait
+Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension patbenatar.advanced-new-file --force" -Wait
+Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $VSCODE_EXTENSION_PATH --install-extension sleistner.vscode-fileutils --force" -Wait
 
 Write-Log "Add VSCode to PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$VSCODE_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
