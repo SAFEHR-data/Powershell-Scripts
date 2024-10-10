@@ -12,7 +12,8 @@ $INSTALL_DIRECTORY="C:\Software"
 Set-Location -Path $BUILD_DIRECTORY
 
 # PyCharm
-$PYCHARM_DOWNLOAD_URL="https://download.jetbrains.com/python/pycharm-community-2023.1.3.exe"
+$PYCHARM_VERSION="2024.2.3"
+$PYCHARM_DOWNLOAD_URL="https://download.jetbrains.com/python/pycharm-community-${PYCHARM_VERSION}.exe"
 $PYCHARM_INSTALLER_FILE="pycharm_installer.exe"
 $PYCHARM_LOG_FILE="pycharm_install.log"
 $PYCHARM_INSTALL_PATH="$INSTALL_DIRECTORY\PyCharm"
