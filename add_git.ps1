@@ -11,8 +11,8 @@ $SETTINGS_FILE="$BUILD_DIRECTORY\bash_settings.inf"
 
 # Git Bash
 $GitVersion="2.47.0"
-$GitBash_INSTALLER_FILE="Git-$GitVersion-64-bit.exe"
-$GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/$GitVersion.windows.1/$GitBash_INSTALLER_FILE"
+$GitBash_INSTALLER_FILE="Git-${GitVersion}-64-bit.exe"
+$GitBash_DOWNLOAD_URL="https://github.com/git-for-windows/git/releases/download/v${GitVersion}.windows.1/$GitBash_INSTALLER_FILE"
 $GitBash_INSTALL_ARGS="/NORESTART /VERYSILENT /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /LOG=$BUILD_DIRECTORY\git-for-windows.log /LOADINF=$SETTINGS_FILE /SUPPRESSMSGBOXES /ALLUSERS"
 
 
