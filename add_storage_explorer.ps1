@@ -23,4 +23,7 @@ Invoke-WebRequest -Uri $StorageExplorer_DOWNLOAD_URL -UseBasicParsing -OutFile "
 Write-Log "Installing Azure Storage Explorer..."
 Start-Process $StorageExplorer_INSTALLER_FILE -ArgumentList $StorageExplorer_INSTALL_ARGS -Wait
 
+Write-Log "Add Storage Explorer Desktop Shortcut"
+New-Item -ItemType SymbolicLink -Path "~\Desktop\Storage Explorer.lnk" -Target  "$StorageExplorer_INSTALL_PATH\StorageExplorer"
+
 Write-Log "add_storage_explorer script completed"
