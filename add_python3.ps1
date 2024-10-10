@@ -22,6 +22,6 @@ Write-Log "Downloading Python3 installer..."
 Invoke-WebRequest -Uri $PYTHON_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$PYTHON_INSTALLER_FILE"
 
 Write-Log "Installing Python3..."
-Start-Process $BUILD_DIRECTORY\$PYTHON_INSTALLER_FILE -ArgumentList $PYTHON_INSTALL_ARGS -Wait
+Start-Process "$BUILD_DIRECTORY\$PYTHON_INSTALLER_FILE" -ArgumentList $PYTHON_INSTALL_ARGS -Wait
 
 Write-Log "add_python3 script completed"
