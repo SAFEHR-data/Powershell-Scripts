@@ -12,12 +12,11 @@ $INSTALL_DIRECTORY="C:\Software"
 Set-Location -Path $BUILD_DIRECTORY
 
 # VSCODE
-$VSCODE_INSTALLER_FILE="VSCodeSetup-x64-1.71.2.exe"
-$VSCODE_DOWNLOAD_URL="https://update.code.visualstudio.com/1.71.2/win32-x64/stable"
+$VSCODE_INSTALLER_FILE="VSCodeSetup-x64-latest.exe"
+$VSCODE_DOWNLOAD_URL="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
 $VSCODE_INSTALL_PATH="$INSTALL_DIRECTORY\VSCode"
 $VSCODE_EXTENSION_PATH="$VSCODE_INSTALL_PATH\extensions"
 $VSCODE_INSTALL_ARGS="/VERYSILENT /DIR=$VSCODE_INSTALL_PATH /MERGETASKS=!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"
-$VSCODE_INSTALL_PATH="$INSTALL_DIRECTORY\VSCode"
 
 [Environment]::SetEnvironmentVariable("VSCODE_EXTENSIONS", "$VSCODE_EXTENSION_PATH", [EnvironmentVariableTarget]::Machine)
 
@@ -25,7 +24,7 @@ Write-Log "Downloading VSCode system installer..."
 Invoke-WebRequest -Uri $VSCODE_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$VSCODE_INSTALLER_FILE"
 
 Write-Log "Installing VSCode..."
-Start-Process $VSCODE_INSTALLER_FILE -ArgumentList $VSCODE_INSTALL_ARGS -Wait
+Start-Process "$BUILD_DIRECTORY\$VSCODE_INSTALLER_FILE" -ArgumentList $VSCODE_INSTALL_ARGS -Wait
 
 Write-Log "Installing VSCode Extensions"
 New-Item -Path $VSCODE_EXTENSION_PATH -ItemType Directory
