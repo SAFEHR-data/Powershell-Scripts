@@ -18,4 +18,9 @@ Invoke-WebRequest $SSMS_DOWNLOAD_URL -OutFile $BUILD_DIRECTORY\$SSMS_INSTALLER_F
 
 Write-Log "Installing SSMS"
 Start-Process "$BUILD_DIRECTORY\$SSMS_INSTALLER_FILE" -ArgumentList $SSMS_INSTALL_ARGS -Wait
+
+Write-Log "Add SSMS Desktop Shortcut" 
+$ALL_USER_DESKTOP=[Environment]::GetFolderPath('CommonDesktopDirectory')
+New-Item -ItemType SymbolicLink -Path "$ALL_USER_DESKTOP\SSMS.lnk" -Target  "$SSMS_INSTALL_DIRECTORY\Common7\IDE\Ssms.exe"
+
 Write-Log "add_ssms script completed"

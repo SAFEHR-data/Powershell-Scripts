@@ -24,6 +24,7 @@ Write-Log "Installing Azure Storage Explorer..."
 Start-Process $StorageExplorer_INSTALLER_FILE -ArgumentList $StorageExplorer_INSTALL_ARGS -Wait
 
 Write-Log "Add Storage Explorer Desktop Shortcut"
-New-Item -ItemType SymbolicLink -Path "~\Desktop\Storage Explorer.lnk" -Target  "$StorageExplorer_INSTALL_PATH\StorageExplorer"
+$ALL_USER_DESKTOP=[Environment]::GetFolderPath('CommonDesktopDirectory')
+New-Item -ItemType SymbolicLink -Path "$ALL_USER_DESKTOP\Storage Explorer.lnk" -Target  "$StorageExplorer_INSTALL_PATH\StorageExplorer.exe"
 
 Write-Log "add_storage_explorer script completed"

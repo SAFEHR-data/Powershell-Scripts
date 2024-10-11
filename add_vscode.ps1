@@ -50,8 +50,9 @@ Start-Process "$VSCODE_INSTALL_PATH\bin\code" -ArgumentList "--extensions-dir $V
 Write-Log "Add VSCode to PATH environment variable"
 [Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$VSCODE_INSTALL_PATH\bin", [EnvironmentVariableTarget]::Machine)
 
-Write-Log "Add VSCode Desktop Shortcut"
-New-Item -ItemType SymbolicLink -Path "~\Desktop\VS Code.lnk" -Target  "$VSCODE_INSTALL_PATH\Code"
+Write-Log "Add VSCode Desktop Shortcut" 
+$ALL_USER_DESKTOP=[Environment]::GetFolderPath('CommonDesktopDirectory')
+New-Item -ItemType SymbolicLink -Path "$ALL_USER_DESKTOP\VS Code.lnk" -Target  "$VSCODE_INSTALL_PATH\Code.exe"
 
 
 Write-Log "add_vscode script completed"
