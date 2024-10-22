@@ -7,15 +7,23 @@ function Write-Log {
 }
 
 $BUILD_DIRECTORY="C:\BuildArtifacts"
+$INSTALL_DIRECTORY="C:\Software"
 
-$AZCOPY_INSTALLER_FILE="MicrosoftAzureStorageAzCopy_netcore_x64.msi"
-$AZCOPY_DOWNLOAD_URL="https://aka.ms/downloadazcopy"
-$AZCOPY_INSTALL_ARGS="/I $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE /qn /norestart"
+$AZCOPY_INSTALLER_FILE="AzCopy.zip"
+$AZCOPY_DOWNLOAD_URL="https://aka.ms/downloadazcopy-v10-windows"
+$AZCOPY_INSTALL_PATH="$INSTALL_DIRECTORY\AZCopy"
 
 Write-Log "Downloading AZCOPY installer"
-Invoke-WebRequest $AZCOPY_DOWNLOAD_URL -OutFile $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE
+Invoke-WebRequest -Uri $AZCOPY_DOWNLOAD_URL -OutFile $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE -UseBasicParsing
 
-Write-Log "Installing AZCOPY"
-Start-Process msiexec.exe -Wait -ArgumentList "$AZCOPY_INSTALL_ARGS"
+Write-Log "Extract installer"
+Expand-Archive $BUILD_DIRECTORY\$AZCOPY_INSTALLER_FILE $BUILD_DIRECTORY\AzCopy -Force
+
+Write-Log "Move AzCopy"
+mkdir $AZCOPY_INSTALL_PATH
+Get-ChildItem $BUILD_DIRECTORY\AzCopy/*/azcopy.exe | Move-Item -Destination "$AZCOPY_INSTALL_PATH\"
+
+Write-Log "Add AzCopy to PATH environment variable"
+[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;AZCOPY_INSTALL_PATH", [EnvironmentVariableTarget]::Machine)
 
 Write-Log "add_azcopy script completed"
