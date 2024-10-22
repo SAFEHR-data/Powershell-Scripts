@@ -24,6 +24,6 @@ mkdir $AZCOPY_INSTALL_PATH
 Get-ChildItem $BUILD_DIRECTORY\AzCopy/*/azcopy.exe | Move-Item -Destination "$AZCOPY_INSTALL_PATH\"
 
 Write-Log "Add AzCopy to PATH environment variable"
-[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;AZCOPY_INSTALL_PATH", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", "$Env:PATH;$AZCOPY_INSTALL_PATH", [EnvironmentVariableTarget]::Machine)
 
 Write-Log "add_azcopy script completed"
