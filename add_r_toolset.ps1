@@ -12,9 +12,10 @@ $INSTALL_DIRECTORY="C:\Software"
 Set-Location -Path $BUILD_DIRECTORY
 
 # R
-$R_INSTALLER_FILE="R-4.4.1-win.exe"
+$R_VERSION="4.4.2"
+$R_INSTALLER_FILE="R-${R_VERSION}-win.exe"
 $R_MIRROR="cran.ma.imperial.ac.uk"
-$R_DOWNLOAD_URL="https://$R_MIRROR/bin/windows/base/old/4.4.1/$R_INSTALLER_FILE"
+$R_DOWNLOAD_URL="https://$R_MIRROR/bin/windows/base/old/${R_VERSION}/$R_INSTALLER_FILE"
 $R_INSTALL_PATH="$INSTALL_DIRECTORY\R"
 $R_INSTALL_ARGS="/VERYSILENT /NORESTART /ALLUSERS /DIR=$R_INSTALL_PATH"
 
@@ -30,10 +31,10 @@ Start-Process "$R_INSTALL_PATH\bin\x64\RSetReg.exe" -Wait
 # RTools - This need to be install at the default location to avoid rtools not found errors.
 # Also need to update with version of R, so R 4.3 -> rtools 43
 $RTools_MAJOR_VERSION="rtools44"
-$RTools_INSTALLER_FILE="$RTools_MAJOR_VERSION-6104-6039.exe"
-$RTools_DOWNLOAD_URL="https://cran.r-project.org/bin/windows/Rtools/$RTools_MAJOR_VERSION/files/$RTools_INSTALLER_FILE"
+$RTools_INSTALLER_FILE="$RTools_MAJOR_VERSION-6335-6327.exe"
+#$RTools_DOWNLOAD_URL="https://cran.r-project.org/bin/windows/Rtools/$RTools_MAJOR_VERSION/files/$RTools_INSTALLER_FILE"
+RTools_DOWNLOAD_URL="https://${R_MIRROR}/bin/windows/Rtools/${RTools_MAJOR_VERSION}/files/${RTools_INSTALLER_FILE}"
 $RTools_INSTALL_ARGS="/VERYSILENT /NORESTART /ALLUSERS"
-# $RTools_BIN_PATH="C:\$RTools_MAJOR_VERSION\usr\bin\"
 
 Write-Log "Downloading RTools installer..."
 Invoke-WebRequest -Uri $RTools_DOWNLOAD_URL -UseBasicParsing -OutFile "$BUILD_DIRECTORY\$RTools_INSTALLER_FILE"
@@ -42,7 +43,8 @@ Write-Log "Installing RTools..."
 Start-Process $RTools_INSTALLER_FILE -ArgumentList $RTools_INSTALL_ARGS -Wait
 
 # RStudio
-$RStudio_INSTALLER_FILE="RStudio-2024.09.0-375.exe"
+$RStudio_Version="2024.12.0-467"
+$RStudio_INSTALLER_FILE="Rstudio-${RStudio_Version}.exe"
 $RStudio_DOWNLOAD_URL="https://download1.rstudio.org/electron/windows/$RStudio_INSTALLER_FILE"
 $RStudio_INSTALL_PATH="$INSTALL_DIRECTORY\RStudio"
 $RStudio_INSTALL_ARGS="/S /D=$RStudio_INSTALL_PATH"
