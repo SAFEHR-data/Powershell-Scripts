@@ -13,7 +13,8 @@ Set-Location -Path $BUILD_DIRECTORY
 
 # Azure Storage Explorer
 $StorageExplorer_INSTALLER_FILE="StorageExplorer.exe"
-$StorageExplorer_DOWNLOAD_URL="https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x809"
+# $StorageExplorer_DOWNLOAD_URL="https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x809"
+$StorageExplorer_DOWNLOAD_URL="https://go.microsoft.com/fwlink/?linkid=2216182"
 $StorageExplorer_INSTALL_PATH="$INSTALL_DIRECTORY\StorageExplorer"
 $StorageExplorer_INSTALL_ARGS="/VERYSILENT /NORESTART /ALLUSERS /DIR=$StorageExplorer_INSTALL_PATH"
 
