@@ -44,8 +44,8 @@ Start-Process $RTools_INSTALLER_FILE -ArgumentList $RTools_INSTALL_ARGS -Wait
 
 # RStudio
 $RStudio_Version="2024.12.0-467"
-$RStudio_INSTALLER_FILE="Rstudio-${RStudio_Version}.exe"
-$RStudio_DOWNLOAD_URL="https://download1.rstudio.org/electron/windows/$RStudio_INSTALLER_FILE"
+$RStudio_INSTALLER_FILE="RStudio-${RStudio_Version}.exe"
+$RStudio_DOWNLOAD_URL="https://download1.rstudio.org/electron/windows/${RStudio_INSTALLER_FILE}"
 $RStudio_INSTALL_PATH="$INSTALL_DIRECTORY\RStudio"
 $RStudio_INSTALL_ARGS="/S /D=$RStudio_INSTALL_PATH"
 
